@@ -1,4 +1,4 @@
-export class HeroeMdel {
+export class HeroeModel {
     id: string;
     nombre: string;
     poder: string;

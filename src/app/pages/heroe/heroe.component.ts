@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroeMdel } from '../../models/heroe.model';
+import { HeroeModel } from '../../models/heroe.model';
 import { NgForm } from '@angular/forms';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -10,7 +10,7 @@ import { HeroesService } from '../../services/heroes.service';
 })
 export class HeroeComponent implements OnInit {
 
-  heroe = new HeroeMdel();
+  heroe = new HeroeModel();
 
   constructor( private heroesService: HeroesService) { }
 
@@ -23,9 +23,15 @@ export class HeroeComponent implements OnInit {
       return;
     }
 
-    this.heroesService.crearHeroe(this.heroe).subscribe( resp => {
-      console.log(resp);
-    });
+    if (this.heroe.id) {
+      this.heroesService.actualizarHeroe(this.heroe).subscribe( resp => {
+        console.log(resp);
+      });
+    } else {
+      this.heroesService.crearHeroe(this.heroe).subscribe( resp => {
+        console.log(resp);
+      });
+    }
   }
 
 }
