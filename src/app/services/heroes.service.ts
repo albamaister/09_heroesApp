@@ -32,8 +32,11 @@ export class HeroesService {
     return this.http.put(`${this.url}/Heroes/${heroe.id}.json`, heroeTemp);
   }
 
-  getHeroes()
-  {
+
+  gerHeroe(id: string) {
+    return this.http.get(`${this.url}/Heroes/${id}.json`);
+  }
+  getHeroes() {
     return this.http.get(`${this.url}/Heroes.json`)
               .pipe(
                 map(resp => this.crearArreglo(resp) )
